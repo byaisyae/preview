@@ -1,148 +1,135 @@
 /* Data undangan (nama, tanggal, acara, rekening, galeri, cerita) — edit di file ini. */
 /* ============ DATA — edit di sini ============ */
-// Semua foto memakai file lokal di folder img/ (foto asli kostumer).
-const U = (id, w, h) =>
-  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&q=75&w=${w}&h=${h}`;
-// Kosongkan ("" / []) bagian opsional bila tidak dipakai: live, giftAddress, gifts, story.
+// semua gambar dummy diambil dari folder img/ (ganti file di folder tsb dengan foto asli)
 const C = {
   bride: {
-    full: "Khoerunnisa", // nama + gelar
-    nick: "Icha", // nama panggilan (tampil di cover)
-    ig: "Khrnns_icha", // tanpa @
-    wa: "6281224235253", // format 62xxx
-    father: "Agus",
-    mother: "Kokom",
-    role: "Putri", // Putri / Putri pertama / Putri kedua ...
-    address: "Jl. Cigending Gg. Situ Indah 2 RT 03 RW 08, Ujungberung, Bandung",
-    // 2 foto = carousel otomatis (bergeser ke kanan). Isi 1 foto saja bila tidak ingin carousel.
-    photos: ["img/bride-1.jpg", "img/bride-2.jpg"],
+    full: "Regina Febrianti, S.T.",
+    nick: "Rere",
+    ig: "reginafebriantii",
+    father: "Suhermawan",
+    mother: "Tuti Milawati",
+    role: "Putri",
+    address:
+      "KPAD Pindad Utara K2234 Kel. Kebon Jayanti, Kec. Kiaracondong, Kota Bandung",
+    photo: "img/rere.jpg",
   },
   groom: {
-    full: "Asep Ridwan",
-    nick: "Ridwan",
-    ig: "ridwannn_313",
-    wa: "6283170854327",
-    father: "Jajang Irawan",
-    mother: "Sumiati",
+    full: "Jabal Mufridiharja, S.Pd., S.T.",
+    nick: "Jabal",
+    ig: "jabalmufrid",
+    father: "Syarifudin, S.Ag.",
+    mother: "Supriyatini, S.Pd.",
     role: "Putra",
-    address: "Sumberejo RT 02 RW 03, Waway Karya, Lampung Timur",
-    // 2 foto = carousel otomatis (bergeser ke kiri).
-    photos: ["img/groom-1.jpg", "img/groom-2.jpg"],
+    address:
+      "Jl. Asep Berlian No.37 Kel. Cicadas, Kec. Cibeunying Kidul, Kota Bandung",
+    photo: "img/jabal.jpg",
   },
-  date: "2026-12-12T07:30:00", // tanggal & jam mulai acara (Sabtu, 12 Desember 2026)
-  // Identitas & teks undangan
-  site: {
-    title: "The Wedding of Icha & Ridwan", // judul tab browser
-    copyright: "© 2026 Aisyae Digital Invitation — Dibuat dengan cinta.",
-    // kredit desainer di footer (kosongkan {} untuk menyembunyikan)
-    credit: {
-      name: "saevitation.com",
-      url: "https://saevitation.com",
-      ig: "saevitation",
-    },
-  },
-  text: {
-    greeting: "Assalamu'alaikum Wr. Wb.",
-    intro:
-      "Segala puji bagi Allah SWT yang telah menjadikan hamba-Nya hidup berpasang-pasangan. Dengan memohon ridho, rahmat, dan berkah-Nya, kami bermaksud mengundang Bapak/Ibu/Saudara/i dalam acara pernikahan kami.",
-    quote:
-      "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang.",
-    quoteSource: "AR-RUM AYAT : 21",
-    closing:
-      "Merupakan sebuah kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu. Terima kasih.",
-  },
-  // URL Web App Google Apps Script (berakhiran /exec) untuk RSVP & ucapan. Kosongkan = disimpan di browser saja (hanya untuk uji coba)
-  rsvp: "https://script.google.com/macros/s/AKfycbzMHV6I-FdWrFjCwSy974_ioTJlw2uFrjDm2SxTDJGfm2bTxHL93BsVfVUzfbTPjk1c/exec",
-  // foto latar tiap bagian
+  // TODO: ganti tanggal, lokasi, rekening, cerita & foto dengan data asli
+  date: "2026-12-30T08:00:00",
+  rsvp: "", // URL Web App Google Apps Script (berakhiran /exec). Kosong = RSVP hanya disimpan di browser tamu
   bg: {
-    // latar paralax watercolor untuk bagian tanpa foto (Mempelai, Galeri, Cerita, Hadiah)
-    paper: "img/paper.jpg",
-    cover: "img/cover.jpg",
-    // cover pembuka & Home (HP dan desktop memakai foto yang sama, dipotong penuh)
-    open: "img/open.jpg",
-    openWide: "img/open.jpg",
-    quote: "img/quote.jpg",
-    foot: "img/foot.jpg",
-    date: "img/date.jpg",
+    cover: "img/4.jpg",
+    quote: "img/5.jpg",
+    foot: "img/1.jpg",
+    date: "img/2.jpg",
   },
   events: [
     {
       t: "Akad Nikah",
-      // photos: 2 foto = carousel otomatis; date (opsional) = tanggal khusus acara ini, kosong = tanggal utama
-      photos: ["img/foot.jpg", "img/gal-9.jpg"],
-      time: "07.30 - 09.00 WIB",
-      place: "Gedung Brata Kartika",
-      addr: "Jl. Nagrog No.815, Pasirwangi, Kec. Ujung Berung, Kota Bandung, Jawa Barat 40618",
-      map: "https://maps.app.goo.gl/CNNyqXyhwyHs3FMG8?g_st=ac",
+      time: "08.00 - 09.00 WIB",
+      place: "LPTQ Jabar",
+      addr: "Jl. AH. Nasution No. 247 KM 8, RT.03/RW.08, Karang Pamulang, Kec. Mandalajati, Kota Bandung, Jawa Barat 40194",
+      map: "https://maps.app.goo.gl/tbRfviGo2Xn6nkbZA?g_st=ac",
     },
     {
       t: "Resepsi",
-      photos: ["img/resepsi-1.jpg", "img/resepsi-2.jpg"],
-      time: "10.00 - 15.00 WIB",
-      place: "Gedung Brata Kartika",
-      addr: "Jl. Nagrog No.815, Pasirwangi, Kec. Ujung Berung, Kota Bandung, Jawa Barat 40618",
-      map: "https://maps.app.goo.gl/CNNyqXyhwyHs3FMG8?g_st=ac",
+      time: "10.00 - 14.00 WIB",
+      place: "LPTQ Jabar",
+      addr: "Jl. AH. Nasution No. 247 KM 8, RT.03/RW.08, Karang Pamulang, Kec. Mandalajati, Kota Bandung, Jawa Barat 40194",
+      map: "https://maps.app.goo.gl/tbRfviGo2Xn6nkbZA?g_st=ac",
     },
   ],
-  live: "", // link live streaming (kosongkan jika tidak ada)
-  music: "sound/sunda.mp4", // lagu latar: taruh file mp3 di folder sound/
-  // alamat pengiriman kado (kosongkan {} jika tidak dipakai)
+  live: "", // link live streaming (OPSIONAL: kosongkan = bagian Live Streaming tidak ditampilkan)
+  music: "sound/nadin.mp3", // lagu latar (folder sound/)
   giftAddress: {
-    name: "Icha",
-    addr: "Jl. Cigending Gg. Situ Indah 2 RT 03 RW 08 (Pabrik Tempe Afka)",
+    name: "Jabal Mufridiharja",
+    addr: "Jl. Asep Berlian No.37, Cicadas, Kec. Cibeunying Kidul, Kota Bandung, Jawa Barat 40121",
   },
-  // rekening amplop digital (boleh lebih dari satu; kosongkan [] jika tidak dipakai)
-  gifts: [{ bank: "BCA", no: "2831880815", name: "Khoerunnisa" }],
-  // galeri: disarankan 6 foto portrait agar ringan (tampil sebagai slider + thumbnail)
+  giftWa: "6281321987887", // WhatsApp untuk konfirmasi kado, format 62xxx (OPSIONAL: kosongkan = tombol tidak ditampilkan)
+  gifts: [],
   gallery: [
-    "img/gal-1.jpg",
-    "img/gal-2.jpg",
-    "img/gal-3.jpg",
-    "img/gal-11.webp",
-    "img/gal-4.jpg",
-    "img/gal-5.jpg",
-    "img/gal-6.jpg",
-    "img/open.jpg",
-    "img/gal-7.jpg",
-    "img/gal-8.jpg",
-    "img/gal-10.webp",
-    "img/gal-9.jpg",
-    "img/foot.jpg",
-    "img/quote.jpg",
-    "img/date.jpg",
-    "img/open-wide.jpg",
+    "img/5.jpg",
+    "img/3.jpg",
+    "img/4.jpg",
+    "img/2.jpg",
+    "img/a1.jpg",
+    "img/a2.jpg",
+    "img/a3.jpg",
+    "img/a10.jpg",
+    "img/a4.jpg",
+    "img/a5.jpg",
+    "img/a6.jpg",
+    "img/a7.jpg",
+    "img/a8.jpg",
+    "img/a9.jpg",
+    "img/1.jpg",
+    "img/bride.jpg",
+
+    "img/jabal.jpg",
+    "img/groom.jpg",
+
+    "img/rere.jpg",
   ],
-  // cerita (kosongkan [] jika tidak dipakai)
-  // 2 foto cerita (carousel otomatis bergeser ke bawah)
-  storyPhotos: ["img/story-1.jpg", "img/story-2.jpg"],
-  // contoh isi (hapus tanda // di depan, lalu isi dengan cerita asli):
-  // story: [
-  //   { d: "09 September 2016", t: "Awal Bertemu", p: "Tulis cerita singkat di sini." },
-  //   { d: "12 Desember 2016", t: "Menjalin Hubungan", p: "Tulis cerita singkat di sini." },
-  //   { d: "15 Januari 2023", t: "Bertunangan", p: "Tulis cerita singkat di sini." },
-  // ],
-  // cerita (kosongkan [] jika tidak dipakai)
   story: [
     {
-      d: "Juni 2025",
+      d: "22 Januari 2024",
       t: "Awal Pertemuan",
-      p: "Tidak ada pertemuan yang benar-benar kebetulan. Di antara banyaknya tempat dan jarak yang memisahkan, ternyata takdir punya cara sendiri untuk mempertemukan kami. Siapa sangka, dua orang yang awalnya tidak saling mengenal bisa dipertemukan dengan cara yang tidak pernah disangka. Karena jika memang sudah berjodoh, sejauh apa pun jaraknya, pasti akan ada cara untuk bertemu.",
+      p: "Awal dari sebuah pertemuan yang tidak terduga dan akhirnya membawa kami pada satu tujuan yang sama. Kami percaya bahwa setiap perjalanan ini adalah bagian dari takdir yang telah Allah gariskan.",
+      i: "img/1.jpg",
     },
     {
-      d: "31 Agustus 2025",
-      t: "Mulai Mengenal",
-      p: "Semua berawal dari hari ulang tahun yang sederhana. Di hari istimewa itu, dia datang membawa sebuah hadiah berupa bolu yang begitu cantik dan indah. Mungkin terlihat sederhana, tetapi perhatian kecil itu menjadi awal dari cerita yang lebih berarti. Dari situlah kami mulai saling mengenal dan perlahan membuka cerita satu sama lain.",
+      d: "11 Februari 2024",
+      t: "Menjalin Hubungan",
+      p: "Perjalanan cinta kami bukanlah tanpa ujian, dihadapkan pada jarak yang memisahkan dan entah sudah berapa kali kami saling memaafkan. Sehingga menuntut kami untuk belajar saling mendewasakan dan terus berkomitmen untuk terus berjalan berdampingan, menyatukan perbedaan menjadi satu tujuan yang pasti.",
+      i: "img/2.jpg",
     },
     {
-      d: "September 2025",
-      t: "Perjalanan Bersama",
-      p: "Sejak saat itu, kami mulai menjalani hari-hari bersama dan mengenal lebih jauh satu sama lain. Ada banyak cerita, tawa, dan momen sederhana yang perlahan menjadi kenangan berharga. Kami belajar memahami, menerima, dan saling melengkapi. Hingga tanpa terasa, hubungan ini tumbuh menjadi sesuatu yang semakin berarti.",
+      d: "28 Februari 2026",
+      t: "Lamaran",
+      p: "Setelah menjalin hubungan selama 2 tahun kami memantapkan langkah untuk menjalin sebuah ikatan suci yang dicintai-Nya. Melalui lamaran ini menjadi satu langkah keputusan sadar untuk mengikatkan janji, memberikan sisa waktu kami hanya untuk satu nama di hari ini dan selamanya.",
+      i: "img/5.jpg",
     },
     {
-      d: "12 Desember 2026",
-      t: "Menuju Selamanya",
-      p: "Kini, dua orang yang dulu dipertemukan secara tidak sengaja bersiap memulai cerita baru untuk selamanya. Setelah melewati berbagai cerita dan perjalanan, kami memilih untuk melangkah bersama dalam ikatan suci pernikahan. Karena ternyata, sejauh apa pun jarak memisahkan, jika memang sudah menjadi takdir, dua hati akan selalu menemukan jalan untuk bertemu. Dan kali ini, bukan lagi sekadar bertemu, tetapi untuk bersama selamanya.",
+      d: "30 Desember 2026",
+      t: "Menikah",
+      p: "Percayalah, bukan karena bertemu lalu berjodoh, tapi karena berjodohlah kami dipertemukan. Kami memutuskan untuk mengikrarkan janji suci pernikahan kami yang InsyaAllah di bulan Desember ini. Sebagaimana yang pernah dikatakan oleh Ali bin Abi Thalib: “Apa yang menjadi takdirmu, akan menemukan jalannya untuk menemukanmu”.",
+      i: "img/3.jpg",
     },
   ],
 };
+const GD = {
+  "img/og.jpg": [1200, 630],
+  "img/3.jpg": [1201, 1800],
+  "img/4.jpg": [1201, 1800],
+  "img/2.jpg": [1202, 1800],
+  "img/a1.jpg": [1202, 1800],
+  "img/a2.jpg": [1202, 1800],
+  "img/a3.jpg": [1202, 1800],
+  "img/1.jpg": [1800, 1202],
+  "img/a4.jpg": [1202, 1800],
+  "img/a5.jpg": [1202, 1800],
+  "img/a6.jpg": [1202, 1800],
+  "img/a7.jpg": [1202, 1800],
+  "img/a8.jpg": [1201, 1800],
+  "img/a9.jpg": [1202, 1800],
+  "img/5.jpg": [1800, 1202],
+  "img/d1.jpg": [900, 900],
+  "img/d2.jpg": [900, 900],
+  "img/d3.jpg": [900, 900],
+  "img/a10.jpg": [1800, 1202],
+  "img/bride.jpg": [900, 1200],
+  "img/jabal.jpg": [1202, 1800],
+  "img/groom.jpg": [900, 1200],
+  "img/rere.jpg": [1202, 1800],
+}; // ukuran foto galeri (lebar, tinggi); foto landscape otomatis tampil selebar grid
 /* =============================================== */

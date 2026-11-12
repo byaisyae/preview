@@ -1,4 +1,4 @@
-/* Tombol salin dan lightbox galeri. */
+/* Tombol salin, lightbox galeri. */
 /* salin + lightbox (geser / panah / dot) */
 const copyTxt = (t, ok) => {
   const fb = () => {

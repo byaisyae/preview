@@ -2,24 +2,12 @@
 /* cover, tamu, navigasi */
 history.scrollRestoration = "manual";
 scrollTo(0, 0);
-$("#cvbg").style.backgroundImage = `url(${C.bg.open || C.bg.cover})`;
-document.title = C.site.title;
-document
-  .querySelectorAll("[data-names]")
-  .forEach((el) => (el.textContent = `${B.nick} & ${G.nick}`));
-$("#coverDate").textContent = [
-  d0.getDate(),
-  d0.getMonth() + 1,
-  d0.getFullYear(),
-]
-  .map((n) => String(n).padStart(2, "0"))
-  .join(" . ");
+$("#cvbg").style.backgroundImage = `url(${C.bg.cover})`;
+$("#coverDate").textContent = fmt;
 $("#sideDate").textContent = fmt.toUpperCase();
 const sl = [...document.querySelectorAll(".sl")];
-// panel besar di sisi layar lebar: bagian "cover" memakai foto cover versi lebar
 sl.forEach(
-  (el) =>
-    (el.style.backgroundImage = `url(${(el.dataset.k === "cover" && C.bg.openWide) || C.bg[el.dataset.k]})`),
+  (el) => (el.style.backgroundImage = `url(${C.bg[el.dataset.k]})`),
 );
 const SK = {
   home: "cover",
@@ -35,15 +23,14 @@ const so = new IntersectionObserver(
     es.forEach((x) => {
       if (x.isIntersecting) {
         const k = SK[x.target.id];
-        sl.forEach((el) => (el.style.opacity = el.dataset.k === k ? 1 : 0));
+        sl.forEach(
+          (el) => (el.style.opacity = el.dataset.k === k ? 1 : 0),
+        );
       }
     }),
   { rootMargin: "-50% 0px -50% 0px" },
 );
-Object.keys(SK).forEach((i) => {
-  const el = document.getElementById(i);
-  if (el) so.observe(el);
-});
+Object.keys(SK).forEach((i) => so.observe(document.getElementById(i)));
 $("#guest").textContent =
   new URLSearchParams(location.search).get("to") || "Tamu Undangan";
 $("#nav").innerHTML = [
@@ -55,10 +42,9 @@ $("#nav").innerHTML = [
   ["rsvp", "RSVP"],
   ["hadiah", "Hadiah"],
 ]
-  .filter(([i]) => document.getElementById(i))
   .map(
     ([i, t]) =>
-      `<a href="#${i}" class="inline-block px-3 py-1.5 rounded-full hover:bg-n8 hover:text-white transition">${t}</a>`,
+      `<a href="#${i}" class="inline-block px-3 py-1.5 rounded-full hover:bg-sk-300 hover:text-n9 transition">${t}</a>`,
   )
   .join("");
 const a = $("#bgm");
@@ -103,10 +89,3 @@ const tick = () => {
 };
 tick();
 setInterval(tick, 1000);
-
-// tautan konfirmasi hadiah ke WhatsApp mempelai wanita (nama tamu dari ?to=)
-const giftWa = $("#giftWa");
-if (giftWa)
-  giftWa.href = `https://wa.me/${B.wa}?text=${encodeURIComponent(
-    `Assalamu'alaikum, saya ${$("#guest").textContent} ingin mengonfirmasi pengiriman hadiah untuk pernikahan ${B.nick} & ${G.nick}. Terima kasih.`,
-  )}`;

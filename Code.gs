@@ -1,15 +1,15 @@
 /**
  * RSVP, Ucapan Doa & Balasan → Google Sheet
- * Undangan Pernikahan (template)
+ * Undangan Rere & Jabal
  *
  * CARA PASANG (sekali saja):
- * 1. Buat Google Sheet baru (nama bebas, mis. "RSVP Nama & Nama").
+ * 1. Buat Google Sheet baru (nama bebas, mis. "RSVP Rere & Jabal").
  * 2. Menu Extensions (Ekstensi) → Apps Script. Hapus isi default, tempel seluruh kode ini, lalu Save.
  * 3. Klik Deploy → New deployment → ikon roda gigi → pilih "Web app".
  *      - Execute as (Jalankan sebagai) : Me (akun Anda)
  *      - Who has access (Akses)        : Anyone (Siapa saja)
  *    Klik Deploy, setujui izin yang diminta, lalu salin "Web app URL" (berakhiran /exec).
- * 4. Tempel URL itu ke scripts/config.js pada: rsvp:"https://script.google.com/macros/s/.../exec"
+ * 4. Tempel URL itu ke index.html pada: rsvp:"https://script.google.com/macros/s/.../exec"
  *
  * CATATAN: setiap kali Anda mengubah kode ini, buat versi baru lewat
  * Deploy → Manage deployments → Edit (pensil) → Version: New version → Deploy.
@@ -128,9 +128,14 @@ function doGet() {
     if (rl > 1) {
       const s2 = Math.max(2, rl - MAX_BALASAN + 1);
       replies = rs
-        .getRange(s2, 2, rl - s2 + 1, 3)
+        .getRange(s2, 1, rl - s2 + 1, 4)
         .getValues()
-        .map((r) => ({ w: r[0], n: r[1], m: r[2] })); // ID Ucapan, Nama, Balasan
+        .map((r) => ({
+          w: r[1],
+          n: r[2],
+          m: r[3],
+          t: r[0] instanceof Date ? r[0].getTime() : 0,
+        })); // Waktu, ID Ucapan, Nama, Balasan
     }
     return json_({ ok: true, wishes: wishes, replies: replies });
   } catch (err) {
